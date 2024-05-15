@@ -17,7 +17,8 @@ export default function Gps() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       sendDataToServer();
-    }, 1000); // every 2 seconds
+      
+    }, 1000); // every 1 second
 
     return () => clearInterval(intervalId);
   }, [ipAddress, location]);
@@ -67,15 +68,17 @@ export default function Gps() {
       const response = await axios.get('http://192.168.3.133:3000/gps');
       const existingItem = response?.data?.find(item => item.ipAddress === ipAddress);
 
-      // if (existingItem) {
-      //   // Update existing item's location
-      //   const updatedData = { ...existingItem, latitude, longitude };
-      //   await axios.put(`http://192.168.3.133:3000/gps/${existingItem.id}`, updatedData);
-      //   console.log('Location updated successfully');
-      // } 
-      //  {
+      if (existingItem) {
+        // Update existing item's location
+        const updatedData = { ...existingItem, latitude, longitude };
+        await axios.put(`http://192.168.3.133:3000/gps/${existingItem.id}`, updatedData);
+        console.log('Location updated successfully');
+      } 
+       
+
+
         // Add new item
-        if(response){
+        else{
         const data = { latitude, longitude, ipAddress };
         await axios.post('http://192.168.3.133:3000/gps', data);
         console.log('New location added successfully');

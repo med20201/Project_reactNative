@@ -13,6 +13,7 @@
     "@react-native-community/geolocation": "^3.2.1",
     "@react-native-community/netinfo": "11.3.1",
     "axios": "^1.6.8",
+    "cors": "^2.8.5",
     "expo": "~51.0.0",
     "expo-location": "~17.0.1",
     "expo-network": "~6.0.1",
@@ -21,7 +22,8 @@
     "fs": "^0.0.1-security",
     "mysql": "^2.18.1",
     "react": "18.2.0",
-    "react-native": "0.74.1"
+    "react-native": "0.74.1",
+    "react-native-device-info": "^10.13.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0"
